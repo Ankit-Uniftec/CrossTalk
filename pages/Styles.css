@@ -388,7 +388,7 @@ body {
 }
 
 .join-btn {
-    background-color: #000000;
+    background-color: black;
     border-radius: 18px;
     padding: 7px 20px;
     font-size: 16px;
@@ -402,7 +402,8 @@ body {
 }
 
 .join-btn:hover {
-    background-color: #333333;
+    background-color: black;
+    
 }
 
 
@@ -549,9 +550,10 @@ body {
 }
 
 @media (max-width: 768px) {
-    .nav-links .nav-link:not(:last-child) {
+    /* Remove hiding of nav-link elements to show all menu items */
+    /* .nav-links .nav-link:not(:last-child) {
         display: none;
-    }
+    } */
     
     .hero-title {
         font-size: 36px;
@@ -582,6 +584,9 @@ body {
     
     .membership-banner {
         padding: 40px 20px;
+    }
+    .membership-bg{
+        display: none;
     }
 }
 
@@ -616,5 +621,71 @@ body {
     
     .footer-content {
         grid-template-columns: 1fr;
+    }
+}
+
+/* New styles to reorder menu and logo in mobile view */
+.menu-toggle {
+    display: none;
+    
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .nav-links {
+        
+        order: 0;
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: white;
+        border-right: 1px solid #efefef;
+        padding: 20px 10px;
+        z-index: 105;
+        margin-left: 0;
+        box-shadow: 2px 0 5px rgba(34, 22, 22, 0.1);
+    }
+   
+    .nav-links.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        margin-right: 10px;
+        color: #010915;
+        position: relative;
+        z-index: 110; /* above nav-links */
+        order: 0;
+    }
+    .logo {
+        order: 1;
+    }
+    .menu-toggle.cross::before {
+        content: '×'; /* Unicode cross (×) */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #010915;
+    }
+    .menu-toggle.cross {
+        color: transparent; /* hide original hamburger */
     }
 }
